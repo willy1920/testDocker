@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "5001:80"
+  php-fpm:
+    build: ./php-fpm
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "5002:80"
+    depends_on:
+      - nginx
